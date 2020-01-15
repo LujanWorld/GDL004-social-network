@@ -40,14 +40,15 @@ const init = () => {
         console.log("clickeado")
     const providerGit = new firebase.auth.GithubAuthProvider();
     firebase
-    .auth().signInWithPopup(providerGit).then(function(result) {
-    console.log(result);
-    console.log("Success GitHub linked");
-    window.location.hash = '#/blog'
-         }).catch(function(error) {
+         .auth().signInWithPopup(providerGit).then(function(result) {
+            console.log(result);
+            console.log("Success GitHub linked");
+            window.location.hash = '#/blog'
+            //router('#/blog')
+        }).catch(function(error) {
             console.log(error);
-         });
-         firebase.auth().signInWithRedirect(providerGit);
+        });
+         //firebase.auth().signInWithRedirect(providerGit);
     });
        window.addEventListener('hashchange', () => {
        router(window.location.hash);
