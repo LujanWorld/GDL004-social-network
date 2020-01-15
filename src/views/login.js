@@ -20,7 +20,7 @@ export default () => {
       <div class="conteiner-networks-display-flex">
         <p class="text-networks">Registrarse con:</p>
           <button class="btn-icon-google" id="googleSignIn">Google</button>
-          <button class="btn-icon-facebook" id="facebookSignIn">Facebook</button> 
+          <button class="btn-icon-github" id="githubSignIn">GitHub</button> 
       </div>
       <p id="start-registry" class="text-start-registry">¿Aún no tienes una cuenta?</p> 
       <button>Regístrate gratis</button>

@@ -1,12 +1,12 @@
 
 
 export default () => {
-    const viewBlog = `
+    const viewSignup = `
     <p>Blog</p>
     `
 
     const sectionElem = document.createElement('section');
-    sectionElem.innerHTML += viewBlog 
+    sectionElem.innerHTML += viewSignup 
     return sectionElem   
 
 }
