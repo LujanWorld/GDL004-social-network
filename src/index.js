@@ -15,6 +15,9 @@ const init = () => {
     router(window.location.hash)
     const googleSignIn = document.getElementById("googleSignIn");
     const githubSignIn = document.getElementById("githubSignIn");
+    const emailSignIn = document.getElementById("email-singup");
+
+    
 
     // login with Google
     // const provider = new firebase.auth.GoogleAuthProvider();
@@ -33,6 +36,19 @@ const init = () => {
             console.log(error);
         });
     });
+
+    emailSignIn.addEventListener("click", (e) => {
+        event.preventDefault()
+        var email = document.getElementById("email-field").value
+        var password = document.getElementById("password-field").value
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((data) => {
+            console.log("todo bien!", data)
+        }).catch(function(error) {
+            // Handle Errors here.
+                console.log("el error:", error)
+            // ...
+          });
+    })
 
     //login with GitHub
     githubSignIn.addEventListener("click", (e) => {
