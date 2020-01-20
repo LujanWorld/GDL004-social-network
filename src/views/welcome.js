@@ -1,4 +1,4 @@
-export default () => {
+export default (container) => {
     const viewWelcome = `
     <div id="main" class="hide">
       <img src="images/LogoAzul.png" width="270" height="230" alt="logo" />
@@ -9,6 +9,15 @@ export default () => {
 
     const sectionElem = document.createElement('section');
     sectionElem.innerHTML += viewWelcome 
-    return sectionElem   
+    container.appendChild(sectionElem)
+
+    const btnLogout = document.getElementById("btnLogout");
+
+    btnLogout.addEventListener("click", e => {
+        e.preventDefault()
+      firebase.auth().signOut().then(() => {
+        window.location.hash = '#/'
+      }).catch()
+    });
 
 }

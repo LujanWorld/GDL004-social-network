@@ -6,15 +6,15 @@ const router = (router) => {
   container.innerHTML = '';
   switch (router) {
     case '': {
-      return container.appendChild(components.login()); }
+        return components.login(container) }
     case '#/': {
-        return container.appendChild(components.login()); }
+        return components.login(container); }
     case '#/blog': {
-      return container.appendChild(components.blog()); }
+      return components.blog(container); }
     case '#/welcome': {
-        return container.appendChild(components.welcome()); }
+        return components.welcome(container); }
     case '#/signup': {
-        return container.appendChild(components.signup()); }
+        return components.signup(container); }
     default:
       break;
   }
