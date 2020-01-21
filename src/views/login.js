@@ -1,45 +1,51 @@
 
 export default (container) => {
     const viewLogin = `
-    <div id="login" class="hide">
-      <main class="center">
-        <div class="container">
-          <h1>ECO LIFE</h1>
-          <img src="images/LogoAzul.png" width="270" height="230" alt="logo" id="imagen"/>
-          <br />
-          
-          <input id="txtEmail" type="email" class="login-input" placeholder="Email"/>
-          <br>
-          <br>
-          <input id="txtPassword" type="password" class="login-input"  placeholder="Password"/>
-          <br />
-          <br>
-          <button id="btnLogin" class="btn-btn-action">Iniciar sesión</button>
+    <div id="login">
+        <div class="general-container">
+            <div class="info-container">
+            
+                <div class="container-white">
 
-          <br>
-          <br>
-          <button id="googleSignIn" class="button-google"><img src="images/search.png" width="70" height="70"/></button>
-          <button id="githubSignIn" class="button-github" ><img src="images/github-image.png" width="70" height="70" /></button>
-          <section>
-          <class= "contenedor-azul"
-          </section>
-
-          <h2>¿Aún no tienes una cuenta?</h2>
-          <button id="btnSignUp" class="btn-btn-action">Regístrate gratis</button>
-        </div>
-      </main>
-    </div>`
-
+                    <div class="container-blue">
+                        <input id="txtEmail" type="email" class="login-input" placeholder="Email"/> 
+                        <br>
+                        <br>
+                        <input id="txtPassword" type="password" class="login-input"  placeholder="Password"/> 
+                        <br>
+                        <br>
+                        <button id="btnLogin" class="button-login">Iniciar sesión</button>
+                        <br>
+                        <br>
+                        <button id="googleSignIn" class="button-google"><img src="images/search.png" width="70" height="70"/></button>
+                        <button id="githubSignIn" class="button-github" ><img src="images/github-image.png" width="70" height="70" /></button>
+                    </div>
+                    <div class="register">
+                        <h2 class="register">¿Aún no tienes una cuenta?</h2>
+                        <br>
+                        <button id="btnSignUp" class="button-login">Regístrate gratis</button>  
+                    </div>
+                </div>
+            </div>
+        <div class="logo-container">
+            <div class="container">
+                <img src="images/LogoAzul.png" width="310px" height="" alt="logo" id="imagen"/>
+                </div>
+            </div>   
+        </div>  
+    </div>
+</div>`
+    
     const sectionElem = document.createElement('section');
     sectionElem.innerHTML += viewLogin 
     container.appendChild(sectionElem) 
 
     const txtEmail = document.getElementById("txtEmail");
-const txtPassword = document.getElementById("txtPassword");
-const btnLogin = document.getElementById("btnLogin");
-const btnSignUp = document.getElementById("btnSignUp");
-const googleSignIn = document.getElementById("googleSignIn");
-const githubSignIn = document.getElementById("githubSignIn");
+    const txtPassword = document.getElementById("txtPassword");
+    const btnLogin = document.getElementById("btnLogin");
+    const btnSignUp = document.getElementById("btnSignUp");
+    const googleSignIn = document.getElementById("googleSignIn");
+    const githubSignIn = document.getElementById("githubSignIn");
 
 // add login event
 btnLogin.addEventListener("click", e => {
