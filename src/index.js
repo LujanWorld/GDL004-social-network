@@ -12,6 +12,7 @@ const firebaseConfig = {
   measurementId: "G-CJK45C4SQ1"
 };
 firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
 
 // App state.
 const state = {
@@ -36,6 +37,13 @@ const btnLogin = document.getElementById("btnLogin");
 const btnSignUp = document.getElementById("btnSignUp");
 const googleSignIn = document.getElementById("googleSignIn");
 const githubSignIn = document.getElementById("githubSignIn");
+const createPost = document.getElementById("createPost");
+const makePost = document.getElementById("makePost");
+const savePost = document.getElementById("savePost");
+const docRef = document.getElementById("samples/post");
+
+
+
 
 // add login event
 btnLogin.addEventListener("click", e => {
@@ -47,6 +55,7 @@ btnLogin.addEventListener("click", e => {
   // sing in
   const promise = auth.signInWithEmailAndPassword(email, pass);
   promise.catch(e => console.log(e.message));
+
 });
 
 // login with Google
@@ -67,11 +76,11 @@ githubSignIn.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("clickeado")
   const providerGit = new firebase.auth.GithubAuthProvider();
-  firebase.auth().signInWithPopup(providerGit).then(function(result){
-      console.log(result);
-      console.log("Success GitHub linked");
-  }).catch(function(error) {
-      console.log(error);
+  firebase.auth().signInWithPopup(providerGit).then(function (result) {
+    console.log(result);
+    console.log("Success GitHub linked");
+  }).catch(function (error) {
+    console.log(error);
   });
 });
 
@@ -93,11 +102,82 @@ btnSignUp.addEventListener("click", e => {
 // Main page
 //
 
+const posts = document.getElementById('posts');
 const btnLogout = document.getElementById("btnLogout");
 
 btnLogout.addEventListener("click", e => {
   firebase.auth().signOut().catch()
 });
+
+posts.addEventListener("click", e => {
+  console.log(e.target);
+  if (e.target.classList.contains("btnDelete")) {
+      console.log("DELETE clicked");
+      let postId = e.target.parentElement.getAttribute("post-id");
+      db.collection("posts").doc(postId).delete()
+        .then(() => {
+          console.log(`Deleted post with id ${postId}`);
+          showPostsFromDB();
+        })
+        .catch(err => console.log(`Error while deleting post with id ${postId}`, err));
+  }
+
+  if (e.target.classList.contains("btnEdit")) {
+    console.log("EDIT clicked");
+  }
+});
+
+
+// save post button
+savePost.addEventListener("click", function () {
+  const textToSave = makePost.value;
+  let data = {
+    email: state.user.email,
+    date: new Date(),
+    text: textToSave,
+  };
+  console.log(data);
+  db.collection("posts").add(data)
+    .then(function (docRef) {
+      showPostsFromDB();
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
+});
+
+// show posts
+function showPosts(data) {
+  posts.innerHTML = "";
+  data.forEach(p => {
+    const post = document.createElement('div');
+    post.classList.add('post');
+    post.setAttribute("post-id", p.id);
+    post.innerHTML = `
+    <div class="name">${p.email}</div>
+    <div class="date">${p.date}</div>
+    <p class="text">${p.text}</p>
+    <button class="btnEdit">Edit</button>
+    <button class="btnDelete">Delete</button>
+    `;
+
+    posts.appendChild(post);
+  });
+}
+
+function showPostsFromDB() {
+  db.collection("posts").get().then((querySnapshot) => {
+    let posts = [];
+    querySnapshot.forEach(function (doc) {
+      let data = doc.data();
+      data.id = doc.id;
+      data.date = data.date.toDate();
+      posts.push(data);
+    });
+    showPosts(posts);
+  });
+}
 
 //
 // Main logic
@@ -113,6 +193,7 @@ const showLoginPage = () => {
 
 const showMainPage = () => {
   togglePage("main");
+  showPostsFromDB();
 }
 
 firebase.auth().onAuthStateChanged(user => {
