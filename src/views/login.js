@@ -29,7 +29,7 @@ export default (container) => {
             </div>
         <div class="logo-container">
             <div class="container">
-                <img src="images/LogoAzul.png" width="310px" height="" alt="logo" id="imagen"/>
+                <img src="images/LogoAzul.png" width="270px" height="" alt="logo" id="imagen"/>
                 </div>
             </div>   
         </div>  

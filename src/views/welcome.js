@@ -1,11 +1,41 @@
 export default (container) => {
     const viewWelcome = `
-    <div id="main" class="hide">
-      <img src="images/LogoAzul.png" width="270" height="230" alt="logo" />
-      <h1>Bienvenid@s a ECO LIFE</h1>
-      <button id="btnLogout" class="btn btn-action">Log out</button>
+    <div class="general-blog">
+        <div class="info-blog">
+            <button class="icon-logo"><img src="images/logo.png" width="100px"></button>
+            <br>
+            <br>
+            <button class="button-google"><img src="images/profile.png" width="50px"></button>
+            <br>
+            <br>
+            <br>
+            <button class="button-google"><img src="images/galery.png" width="50px"></button>
+            <br>
+            <br>
+            <button class="button-google"><img src="images/loupe.png" width="50px"></button>
+            <br>
+            <br>
+            <br>
+            <button class="button-google"><img src="images/eco.png" width="50px"></button>
+            <br>
+            <br>
+            <br>
+            <button id="btnLogout" class="button-login">Salir</button>
+        </div>
+        <div class="container-post">
+            <div class="logo-blog">
+                <img src="images/name.png" width="400px" alt="">
+            </div>
+            <div class="writing-box">
+
+            </div>
+            <div class="display-box">
+
+            </div>
+
+        </div>   
     </div>
-    `
+      `
 
     const sectionElem = document.createElement('section');
     sectionElem.innerHTML += viewWelcome 

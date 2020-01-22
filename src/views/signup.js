@@ -33,5 +33,17 @@ export default (container) => {
     const sectionElem = document.createElement('section');
     sectionElem.innerHTML += viewSignup 
     container.appendChild(sectionElem)    
+    const regirsterBtn = document.getElementById("btn-iniciar-registrar")
+    const email = document.getElementById("input-mail");
+    const password = document.getElementById("input-password");
+    regirsterBtn.addEventListener("click", (e) => {
+      e.preventDefault()
+      firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then((data) => {
+         window.location.hash = '#/welcome'
+      }).catch(function(error) {
+         console.log(error)
+         alert("Hubo un error")
+       });
+    })
 
 }
