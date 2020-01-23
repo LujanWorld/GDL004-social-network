@@ -30,9 +30,10 @@ export default (container) => {
             </div>
             <div class="writing-box">
              <br>
-             <h2 id="createPost">Crea tu post</h2>
-             <input type="text" id="makePost" class="login-input" placeholder="Post"/>
-             <button id="savePost" class="button-login" >Save</button>
+             <h2 id="createPost">¿Qué haces para cuidar a tu planeta?</h2>
+             <br>
+             <input type="text" id="makePost" class="login-input" placeholder="Cuéntanos"/>
+             <button id="savePost" class="btnCancel" >Guardar</button>
             </div>
              <div id="posts" class="display-box">
                <div class="post">
@@ -66,6 +67,55 @@ export default (container) => {
         }).catch()
       });
 
+      posts.addEventListener("click", e => {
+        if (e.target.classList.contains("btnDelete")) {
+          console.log("DELETE clicked");
+          let postId = e.target.parentElement.getAttribute("post-id");
+          db.collection("posts").doc(postId).delete()
+            .then(() => {
+              console.log(`Deleted post with id ${postId}`);
+            })
+            .catch(err => console.log(`Error while deleting post with id ${postId}`, err));
+        }
+      
+        if (e.target.classList.contains("btnEdit")) {
+          //console.log("EDIT clicked");
+          let textEl = e.target.parentElement.getElementsByClassName("text")[0];
+          let inputEl = e.target.parentElement.getElementsByClassName("editInput")[0];
+          inputEl.value = textEl.innerHTML;
+      
+          ["editInput", "btnSave", "btnCancel", "btnEdit", "btnDelete"].forEach(className => {
+            let el = e.target.parentElement.getElementsByClassName(className)[0];
+            el.classList.toggle("hide");
+          });
+        }
+      
+        if (e.target.classList.contains("btnSave")) {
+          let postId = e.target.parentElement.getAttribute("post-id");
+          let inputEl = e.target.parentElement.getElementsByClassName("editInput")[0];
+      
+          let postRef = db.collection("posts").doc(postId);
+      
+          postRef.update({
+            text: inputEl.value,
+          })
+            .then(function () {
+              console.log("Document successfully updated!");
+            })
+            .catch(function (error) {
+              console.error("Error updating document: ", error);
+            });
+        }
+        if (e.target.classList.contains("btnCancel")) {
+          ["editInput", "btnSave", "btnCancel", "btnEdit", "btnDelete"].forEach(className => {
+            let el = e.target.parentElement.getElementsByClassName(className)[0];
+            el.classList.toggle("hide");
+          });
+        }
+      
+      });
+      
+
       savePost.addEventListener("click", function () {
         const textToSave = makePost.value;
         let data = {
@@ -95,8 +145,14 @@ export default (container) => {
         <div class="name">${p.email}</div>
         <div class="date">${p.date}</div>
         <p class="text">${p.text}</p>
-        <button class="btnEdit">Edit</button>
-        <button class="btnDelete">Delete</button>
+        <button class="btnEdit" >Editar</button>
+        <button class="btnDelete">Eliminar</button>
+        <button class="button-google"><img src="images/like.png" width="20px"></button>
+        <br>
+        <br>
+        <input type="text"  class="editInput hide">
+        <button class="btnSave hide">Guardar</button>
+        <button class="btnCancel hide">Cancelar</button>
         `;
 
         posts.appendChild(post);
@@ -117,6 +173,8 @@ export default (container) => {
     }
   
   }
+
+  
 
 
 

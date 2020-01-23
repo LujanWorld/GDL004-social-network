@@ -14,6 +14,9 @@ h1 {
    text-align: center;
    margin-top: 5%;
 }
+h2 {
+  font-size: 20px;
+}
 
 .general-container {
    display: flex;
@@ -30,12 +33,13 @@ h1 {
 }
 
 .login-input {
+  text-align: center;
   background-color:#ffffff;
   border: none;
 	border-radius:10px;
   cursor: text;
   font-family: 'Sans', 'Trebuchet MS', sans-serif;
-  color: #ADE7EA;
+  color: #146064;
 	font-size:17px;
 	padding: 1%;
   text-decoration:none;
@@ -43,7 +47,7 @@ h1 {
   }
 
   ::placeholder {
-      color: #ADE7EA;;
+      color: #CBF9F5;
   }
 
   .button-login {
@@ -169,8 +173,55 @@ h1 {
     margin-left: 50%;
     margin-top: 3%;
     text-align: center;
-  
   }
+  .btnEdit {
+    background-color: #CBF9F5;
+    border-radius: 10px;
+    border: none; 
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #146064;
+  }
+  .btnDelete {
+    background-color: #CBF9F5;
+    border-radius: 10px;
+    border: none; 
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #146064;
+  }
+  .editInput {
+    background-color:#ffffff;
+    border: 1px solid #146064;
+    border-radius:10px;
+    cursor: text;
+    font-family: 'Sans', 'Trebuchet MS', sans-serif;
+    color: #146064;
+    font-size:17px;
+    padding: 1%;
+    text-decoration:none; 
+  }
+  .btnSave {
+    background-color: #CBF9F5;
+    border-radius: 10px;
+    border: none; 
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #146064;
+  }
+  .btnCancel {
+    background-color: #CBF9F5;
+    border-radius: 10px;
+    border: none; 
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #146064;
+  }
+ 
 
   
   /* //Design for iPad// */
@@ -245,6 +296,7 @@ h1 {
       margin-left: 16%;
       margin-top: 15%;
     }
+    
 
   }
   /* //Design for mobil// */
