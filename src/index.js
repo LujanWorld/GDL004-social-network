@@ -110,22 +110,53 @@ btnLogout.addEventListener("click", e => {
 });
 
 posts.addEventListener("click", e => {
-  console.log(e.target);
   if (e.target.classList.contains("btnDelete")) {
-      console.log("DELETE clicked");
-      let postId = e.target.parentElement.getAttribute("post-id");
-      db.collection("posts").doc(postId).delete()
-        .then(() => {
-          console.log(`Deleted post with id ${postId}`);
-          showPostsFromDB();
-        })
-        .catch(err => console.log(`Error while deleting post with id ${postId}`, err));
+    console.log("DELETE clicked");
+    let postId = e.target.parentElement.getAttribute("post-id");
+    db.collection("posts").doc(postId).delete()
+      .then(() => {
+        console.log(`Deleted post with id ${postId}`);
+      })
+      .catch(err => console.log(`Error while deleting post with id ${postId}`, err));
   }
 
   if (e.target.classList.contains("btnEdit")) {
-    console.log("EDIT clicked");
+    //console.log("EDIT clicked");
+    let textEl = e.target.parentElement.getElementsByClassName("text")[0];
+    let inputEl = e.target.parentElement.getElementsByClassName("editInput")[0];
+    inputEl.value = textEl.innerHTML;
+
+    ["editInput", "btnSave", "btnCancel", "btnEdit", "btnDelete"].forEach(className => {
+      let el = e.target.parentElement.getElementsByClassName(className)[0];
+      el.classList.toggle("hide");
+    });
   }
+
+  if (e.target.classList.contains("btnSave")) {
+    let postId = e.target.parentElement.getAttribute("post-id");
+    let inputEl = e.target.parentElement.getElementsByClassName("editInput")[0];
+
+    let postRef = db.collection("posts").doc(postId);
+
+    postRef.update({
+      text: inputEl.value,
+    })
+      .then(function () {
+        console.log("Document successfully updated!");
+      })
+      .catch(function (error) {
+        console.error("Error updating document: ", error);
+      });
+  }
+  if (e.target.classList.contains("btnCancel")) {
+    ["editInput", "btnSave", "btnCancel", "btnEdit", "btnDelete"].forEach(className => {
+      let el = e.target.parentElement.getElementsByClassName(className)[0];
+      el.classList.toggle("hide");
+    });
+  }
+
 });
+
 
 
 // save post button
@@ -139,7 +170,6 @@ savePost.addEventListener("click", function () {
   console.log(data);
   db.collection("posts").add(data)
     .then(function (docRef) {
-      showPostsFromDB();
       console.log("Document written with ID: ", docRef.id);
     })
     .catch(function (error) {
@@ -155,29 +185,30 @@ function showPosts(data) {
     post.classList.add('post');
     post.setAttribute("post-id", p.id);
     post.innerHTML = `
+    <button class="btnEdit" >Edit</button>
+    <button class="btnDelete">Delete</button>
     <div class="name">${p.email}</div>
     <div class="date">${p.date}</div>
     <p class="text">${p.text}</p>
-    <button class="btnEdit">Edit</button>
-    <button class="btnDelete">Delete</button>
+    <input type="text" class="editInput hide">
+    <button class="btnSave hide">Save</button>
+    <button class="btnCancel hide">Cancel</button>
     `;
 
     posts.appendChild(post);
   });
 }
 
-function showPostsFromDB() {
-  db.collection("posts").get().then((querySnapshot) => {
-    let posts = [];
-    querySnapshot.forEach(function (doc) {
-      let data = doc.data();
-      data.id = doc.id;
-      data.date = data.date.toDate();
-      posts.push(data);
-    });
-    showPosts(posts);
+function showPostsFromDB(querySnapshot) {
+  let posts = [];
+  querySnapshot.forEach(function (doc) {
+    let data = doc.data();
+    data.id = doc.id;
+    data.date = data.date.toDate();
+    posts.push(data);
   });
-}
+  showPosts(posts);
+};
 
 //
 // Main logic
@@ -193,7 +224,7 @@ const showLoginPage = () => {
 
 const showMainPage = () => {
   togglePage("main");
-  showPostsFromDB();
+  db.collection("posts").get().then(showPostsFromDB)
 }
 
 firebase.auth().onAuthStateChanged(user => {
@@ -208,3 +239,5 @@ firebase.auth().onAuthStateChanged(user => {
     showLoginPage();
   }
 });
+
+db.collection("posts").onSnapshot(showPostsFromDB);
