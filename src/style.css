@@ -149,8 +149,27 @@ h1 {
     cursor: pointer;
   }
   .logo-blog {
+    margin-top: 7%;
+    margin-left: 70%;
+  }
+
+  .writing-box {
+    width: 400px;
+    height: 120px;
+    margin-left: 50%;
+    margin-top: 10%;
+    text-align: center;
+    background-color: #A3E3E6;
+    border-radius: 12px;
+  }
+
+  .display-box {
+    width: 400px;
+    height: auto;
+    margin-left: 50%;
     margin-top: 3%;
-    margin-left: 90%;
+    text-align: center;
+  
   }
 
   
