@@ -79,7 +79,8 @@ export default (container) => {
         }
       
         if (e.target.classList.contains("btnEdit")) {
-          //console.log("EDIT clicked");
+          let doc = document.getElementsByClassName(e.target.id)[0]
+          doc.classList.remove("escondido");
           let textEl = e.target.parentElement.getElementsByClassName("text")[0];
           let inputEl = e.target.parentElement.getElementsByClassName("editInput")[0];
           inputEl.value = textEl.innerHTML;
@@ -92,6 +93,7 @@ export default (container) => {
       
         if (e.target.classList.contains("btnSave")) {
           let postId = e.target.parentElement.getAttribute("post-id");
+          console.log(postId)
           let inputEl = e.target.parentElement.getElementsByClassName("editInput")[0];
       
           let postRef = db.collection("posts").doc(postId);
@@ -141,18 +143,21 @@ export default (container) => {
         const post = document.createElement('div');
         post.classList.add('post');
         post.setAttribute("post-id", p.id);
+        let botonEdit = "btnEdit-" + p.id
         post.innerHTML = `
         <div class="name">${p.email}</div>
         <div class="date">${p.date}</div>
         <p class="text">${p.text}</p>
-        <button class="btnEdit" >Editar</button>
+        <button id="${botonEdit}" class="btnEdit" >Editar</button>
         <button class="btnDelete">Eliminar</button>
         <button class="button-google"><img src="images/like.png" width="20px"></button>
         <br>
         <br>
-        <input type="text"  class="editInput hide">
-        <button class="btnSave hide">Guardar</button>
-        <button class="btnCancel hide">Cancelar</button>
+        <div class="escondido ${botonEdit}" post-id="${p.id}" >
+          <input type="text"  class="editInput hide">
+          <button class="btnSave hide">Guardar</button>
+          <button class="btnCancel hide">Cancelar</button>
+        </div>
         `;
 
         posts.appendChild(post);

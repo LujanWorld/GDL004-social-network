@@ -151,7 +151,13 @@ h2 {
   }
   .icon-logo {
     cursor: pointer;
+    background-color: transparent;
   }
+
+  .escondido {
+    display: none;
+  }
+
   .logo-blog {
     margin-top: 7%;
     margin-left: 70%;
