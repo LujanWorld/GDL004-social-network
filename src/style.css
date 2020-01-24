@@ -1,15 +1,396 @@
-.center,
+* {
+    font-family: 'Sans', 'Trebuchet MS', sans-serif;
+    color: #146064; 
+    margin: 0%;
+    padding: 0%;
+    border: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+    outline: none;
+    position: relative;
+}
+
 h1 {
+   text-align: center;
+   margin-top: 5%;
+}
+h2 {
+  font-size: 20px;
+}
+
+.general-container {
+   display: flex;
+   margin-top: 0%;
+   padding: 0%;
+}
+
+.info-container {
+    background-image: url(images/imagen.jpg); 
+    background-repeat: no-repeat;
+    background-size: contain; 
+    height: 700px;
+    width: 72%;
+}
+
+.login-input {
   text-align: center;
-  margin-top: 5%;
-  font-family: "Nothing You Could Do", cursive;
-}
-#pageLoginSocial {
+  background-color:#ffffff;
+  border: none;
+	border-radius:10px;
+  cursor: text;
+  font-family: 'Sans', 'Trebuchet MS', sans-serif;
+  color: #146064;
+	font-size:17px;
+	padding: 1%;
+  text-decoration:none;
+  margin-top: 3%;
+  }
+
+  ::placeholder {
+      color: #CBF9F5;
+  }
+
+  .button-login {
+    background-color: #CBF9F5;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    padding: 7px 30px;
+    font-size: 14px;
+    color: #146064;
+    height: 40px;
+    text-transform: uppercase;
+  }
+
+  .button-google {
+      margin-top: 4%;
+      margin-left: 0%;
+      cursor: pointer;
+      background-color: transparent
+  }
+
+  .button-github {
+      margin-top: 4%;
+      margin-left: 7%;
+      cursor: pointer;
+      background-color: transparent
+  }
+  .container-white {
+    text-align: center;  
+    height: 60%;
+    width: 55%;
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 10%;
+    margin-left: 20%;
+    padding-top: 20px;
+   
+  }
+
+  .container-blue {
+    height: 74%;
+    width: 88%;
+    background-color: #A3E3E6;
+    border-radius: 12px;
+    margin: auto;
+    padding-top: 20px;
+   
+  }
+
+  .register {
+      margin-top: 10px;
+   
+  }
+
+  .container {
+      width: 50px;
+      margin-top: 120%;
+      margin-left: 15%;
+      cursor: pointer;
+  
+  }
+
+  .container-image {
+    padding-top: 2%;
+    background-image: url(images/imagen.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    width: 100%;
+    height: 1000px;
+  }
+
+  .container-register-white {
+    padding-top: 2%;
+    background-color: white;
     text-align: center;
-}
-.logosocialmedia {
+    border-radius: 12px;
+    width: 37%;
+    height: 75%;
+    margin-left: 30%;
+  }
+
+  .container-register {
+    background-color: #A3E3E6;
     text-align: center;
-}
-.hide {
+    border-radius: 12px;
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 1px;
+  }
+    /* //styles blog */
+
+  .general-blog {
+   display: flex;
+  }
+  .info-blog {
+    width: 10%;
+    text-align: center;
+    padding-top: 2%;
+    margin-left: 1%;
+    display: flexbox;
+  }
+  .icon-logo {
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  .escondido {
     display: none;
-}
+  }
+
+  .logo-blog {
+    margin-top: 7%;
+    margin-left: 70%;
+  }
+
+  .writing-box {
+    width: 400px;
+    height: 120px;
+    margin-left: 50%;
+    margin-top: 10%;
+    text-align: center;
+    background-color: #A3E3E6;
+    border-radius: 12px;
+  }
+
+  .display-box {
+    width: 400px;
+    height: auto;
+    margin-left: 50%;
+    margin-top: 3%;
+    text-align: center;
+  }
+  .btnEdit {
+    background-color: #CBF9F5;
+    border-radius: 10px;
+    border: none; 
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #146064;
+  }
+  .btnDelete {
+    background-color: #CBF9F5;
+    border-radius: 10px;
+    border: none; 
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #146064;
+  }
+  .editInput {
+    background-color:#ffffff;
+    border: 1px solid #146064;
+    border-radius:10px;
+    cursor: text;
+    font-family: 'Sans', 'Trebuchet MS', sans-serif;
+    color: #146064;
+    font-size:17px;
+    padding: 1%;
+    text-decoration:none; 
+  }
+  .btnSave {
+    background-color: #CBF9F5;
+    border-radius: 10px;
+    border: none; 
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #146064;
+  }
+  .btnCancel {
+    background-color: #CBF9F5;
+    border-radius: 10px;
+    border: none; 
+    cursor: pointer;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: #146064;
+  }
+ 
+
+  
+  /* //Design for iPad// */
+  
+  @media (max-width: 800px) {
+
+    .container {
+      align-items: center;
+      margin-left: 30%;
+      margin-top: 5%;
+      cursor: pointer;
+       }
+
+    .general-container {
+      margin-top: 0%;
+      padding: 0%;
+      flex-direction: column-reverse;
+       }
+
+    .info-container {
+        background-image: url(images/imagen.jpg); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 5%;
+        width: 100%;
+      }
+
+    .container-white {
+        margin-top: 3%;
+        margin-left: 12%;     
+        height: 65%;
+        width: 75%;
+        background-color: white;
+      }
+    
+      .container-blue {
+        height: 75%;
+        width: 90%;
+        background-color: #A3E3E6;
+        margin: auto;
+      }
+      .button-google {
+        margin-top: 2%;
+        margin-left: 0%;
+        cursor: pointer;
+        background-color: transparent
+    }
+  
+    .button-github {
+        margin-top: 2%;
+        margin-left: 7%;
+        cursor: pointer;
+        background-color: transparent
+    }
+
+    .container-image {
+      padding-top: 2%;
+      background-image: url(images/imagen.jpg); 
+      background-repeat: no-repeat;
+      background-size: cover; 
+      width: 100%;
+      height: 1024px;
+    }
+
+    .container-register-white {
+      padding-top: 2%;
+      background-color: white;
+      text-align: center;
+      border-radius: 12px;
+      width: 65%;
+      height: 70%;
+      margin-left: 16%;
+      margin-top: 15%;
+    }
+    
+
+  }
+  /* //Design for mobil// */
+  @media (max-width: 400px) {
+
+    .container {
+      align-items: center;
+      margin-left: 10%;
+      margin-top: 5%;
+      cursor: pointer;
+       }
+
+    .general-container {
+      margin-top: 0%;
+      padding: 0%;
+      flex-direction: column-reverse;
+       }
+
+    .info-container {
+        background-image: url(images/imagen.jpg); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 5%;
+        width: 100%;
+      }
+
+    .container-white {
+        margin-top: 3%;
+        margin-left: 9%;     
+        height: 78%;
+        width: 82%;
+        background-color: white;
+      }
+    
+      .container-blue {
+        height: 75%;
+        width: 90%;
+        background-color: #A3E3E6;
+        margin: auto;
+      }
+      .button-google {
+        margin-top: 2%;
+        margin-left: 0%;
+        cursor: pointer;
+        background-color: transparent
+    }
+  
+    .button-github {
+        margin-top: 2%;
+        margin-left: 7%;
+        cursor: pointer;
+        background-color: transparent
+    }
+
+    .container-image {
+      padding-top: 2%;
+      background-image: url(images/imagen.jpg); 
+      background-repeat: no-repeat;
+      background-size: cover; 
+      width: 100%;
+      height: 1024px;
+    }
+
+    .container-register-white {
+      padding-top: 2%;
+      background-color: white;
+      text-align: center;
+      border-radius: 12px;
+      width: 90%;
+      height: 68%;
+      margin-left: 5%;
+      margin-top: 15%;
+    }
+
+    .container-register {
+      background-color: #A3E3E6;
+      text-align: center;
+      border-radius: 12px;
+      width: 95%;
+      height: 98%;
+      margin-left: 2.5%;
+      padding-top: 2px;
+    }
+
+  }
+
+
+
+
+
+
