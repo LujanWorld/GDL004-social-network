@@ -8,10 +8,10 @@ export default (container) => {
                 <div class="container-white">
 
                     <div class="container-blue">
-                        <input id="txtEmail" type="email" class="login-input" placeholder="Email"/> 
+                        <input id="txtEmail" type="email" class="login-input" placeholder="ejemplo@ejemplo.com"/> 
                         <br>
                         <br>
-                        <input id="txtPassword" type="password" class="login-input"  placeholder="Password"/> 
+                        <input id="txtPassword" type="password" class="login-input"  placeholder="Escribe tu contraseña"/> 
                         <br>
                         <br>
                         <button id="btnLogin" class="button-login">Iniciar sesión</button>

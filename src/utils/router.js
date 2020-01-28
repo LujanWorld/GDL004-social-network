@@ -15,6 +15,8 @@ const router = (router) => {
         return components.welcome(container); }
     case '#/signup': {
         return components.signup(container); }
+    case '#/profile': {
+          return components.profile(container); }
     default:
       break;
   }

@@ -1,27 +1,18 @@
 export default (container) => {
-  var db = firebase.firestore();
+  let db = firebase.firestore();
     const viewWelcome = `
     <div class="general-blog">
         <div class="info-blog">
-            <button class="icon-logo"><img src="images/logo.png" width="100px"></button>
-            <br>
-            <br>
-            <button class="button-google"><img src="images/profile.png" width="50px"></button>
-            <br>
-            <br>
-            <br>
-            <button class="button-google"><img src="images/galery.png" width="50px"></button>
-            <br>
-            <br>
-            <button class="button-google"><img src="images/loupe.png" width="50px"></button>
-            <br>
-            <br>
-            <br>
-            <button class="button-google"><img src="images/eco.png" width="50px"></button>
-            <br>
-            <br>
-            <br>
-            <button id="btnLogout" class="button-login">Salir</button>
+          <nav id="menu">
+          <ul>
+          <li><a href="#"><button class="dropbtn"><img src="images/logo.png" width="100px"></button></a></li>
+          <li><a href="#/profile"><button class="button-google" id="profile"></a><img src="images/profile.png" width="50px"></li>
+          <li><a href="#"><button class="button-google"><img src="images/galery.png" width="50px"></button></a></li>
+          <li><a href="#"><button class="button-google"><img src="images/loupe.png" width="50px"></button></a></li>
+          <li><a href="#"><button class="button-google"><img src="images/eco.png" width="50px"></button></a></li>
+          <li><a href="#"><button id="btnLogout" class="button-login">Cerrar Sesión</button></a></li>
+          </ul>
+          </nav>
         </div>
         <div class="container-post">
             <div class="logo-blog">
@@ -66,6 +57,10 @@ export default (container) => {
           window.location.hash = '#/'
         }).catch()
       });
+      profile.addEventListener("click", e => {
+        e.preventDefault()
+        window.location.hash = '#/profile'
+      })
 
       posts.addEventListener("click", e => {
         if (e.target.classList.contains("btnDelete")) {
@@ -74,13 +69,14 @@ export default (container) => {
           db.collection("posts").doc(postId).delete()
             .then(() => {
               console.log(`Deleted post with id ${postId}`);
+              showPostsFromDB()
             })
             .catch(err => console.log(`Error while deleting post with id ${postId}`, err));
         }
       
         if (e.target.classList.contains("btnEdit")) {
           let doc = document.getElementsByClassName(e.target.id)[0]
-          doc.classList.remove("escondido");
+          doc.classList.remove("occult");
           let textEl = e.target.parentElement.getElementsByClassName("text")[0];
           let inputEl = e.target.parentElement.getElementsByClassName("editInput")[0];
           inputEl.value = textEl.innerHTML;
@@ -103,6 +99,8 @@ export default (container) => {
           })
             .then(function () {
               console.log("Document successfully updated!");
+              showPostsFromDB()
+
             })
             .catch(function (error) {
               console.error("Error updating document: ", error);
@@ -111,7 +109,7 @@ export default (container) => {
         if (e.target.classList.contains("btnCancel")) {
           ["editInput", "btnSave", "btnCancel", "btnEdit", "btnDelete"].forEach(className => {
             let el = e.target.parentElement.getElementsByClassName(className)[0];
-            el.classList.toggle("hide");
+            el.classList.toggle("occult");
           });
         }
       
@@ -153,7 +151,7 @@ export default (container) => {
         <button class="button-google"><img src="images/like.png" width="20px"></button>
         <br>
         <br>
-        <div class="escondido ${botonEdit}" post-id="${p.id}" >
+        <div class="occult ${botonEdit}" post-id="${p.id}" >
           <input type="text"  class="editInput hide">
           <button class="btnSave hide">Guardar</button>
           <button class="btnCancel hide">Cancelar</button>
