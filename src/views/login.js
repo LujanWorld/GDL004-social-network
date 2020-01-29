@@ -1,5 +1,5 @@
 
-export default (container) => {
+export default (container, state) => {
     const viewLogin = `
     <div id="login">
         <div class="general-container">
@@ -68,7 +68,17 @@ btnLogin.addEventListener("click", e => {
 googleSignIn.addEventListener("click", (e) => {
   e.preventDefault()
   const baseProvider = new firebase.auth.GoogleAuthProvider();
-  logOAuth(baseProvider)
+  logOAuth(baseProvider, state)
+//   logOAuth(baseProvider).then(result => {
+//         state.user = result.user
+//       $("#avatar").attr("src", result.user.photoURL)
+//       $(".modal").modal("close")
+//       Materialize.toast(`Bienvenido ${result.user.displayNAme} !! `, 4000)
+//   })
+//   .catch(error =>{
+//       console.error(error)
+//       Materialize.toast(`Error al autenticarse con google: ${error} `, 4000)
+//   })
 });
 
 // login with GitHub
@@ -76,7 +86,7 @@ githubSignIn.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("clickeado")
   const providerGit = new firebase.auth.GithubAuthProvider();
-  logOAuth(providerGit)
+  logOAuth(providerGit, state)
 });
 
 // // add register event
@@ -87,13 +97,14 @@ btnSignUp.addEventListener("click", e => {
 
 }
 
-const logOAuth = (provider) => {
+const logOAuth = (provider, state) => {
     firebase
         .auth()
         .signInWithPopup(provider)
         .then((result) => {
         console.log(result);
         console.log("Success Google linked");
+        state.user = result.user
         window.location.hash = '#/welcome'
         })
         .catch((err) => console.log(err));

@@ -1,4 +1,8 @@
-export default (container) => {
+export default (container, state) => {
+  if (Object.keys(state).length === 0) {
+    console.log("estoy vacio")
+    return window.location.hash = '#/'
+  }
   let db = firebase.firestore();
     const viewWelcome = `
     <div class="general-blog">
@@ -28,7 +32,7 @@ export default (container) => {
             </div>
              <div id="posts" class="display-box">
                <div class="post">
-               <div class="name">Nombre del que escribe el post</div>
+               <p class="name">Nombre del que escribe el post</p>
                <div class="date">fecha del post</div>
                <p class="text">Esta red social esta super</p>
              </div>
@@ -38,6 +42,8 @@ export default (container) => {
         </div>   
     </div>
       `
+
+      console.log("el  estado:", state)
 
       const sectionElem = document.createElement('section');
       sectionElem.innerHTML += viewWelcome 
@@ -54,6 +60,7 @@ export default (container) => {
       btnLogout.addEventListener("click", e => {
           e.preventDefault()
         firebase.auth().signOut().then(() => {
+          state = {}
           window.location.hash = '#/'
         }).catch()
       });
@@ -119,7 +126,7 @@ export default (container) => {
       savePost.addEventListener("click", function () {
         const textToSave = makePost.value;
         let data = {
-          email: "",
+          email: state.user.email,
           date: new Date(),
           text: textToSave,
         };

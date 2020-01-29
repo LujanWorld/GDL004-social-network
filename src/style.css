@@ -242,15 +242,31 @@ h2 {
 
   }
 
+
   /* //Design for Profile// */
+  .container-profile {
+    margin-top: 10%;
+  }
+
   .img {
     border-radius: 50%;
     margin-left: 10px;
     width: 60px;
     height: 60px;
-}
-  /* //Design for Max-Width 1500// */ 
-  @media (max-width: 1500px) {
+   }  
+
+  .header-avatar img {
+    padding-top: 0%;
+    margin-left: 44%;
+    border-radius: 60%;
+    height: 80px;
+    width: 80px;
+    transition: 0.6s;
+    transform: translateY(100px);
+   }
+
+  /* //Design for Max-Width 1600// */ 
+  @media (max-width: 1600px) {
 
     .info-container {
       background-image: url(images/imagen1.jpg); 

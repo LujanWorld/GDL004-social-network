@@ -1,4 +1,4 @@
-export default (container) => {
+export default (container, state) => {
     const viewSignup = `
     <p>Blog</p>
     `
