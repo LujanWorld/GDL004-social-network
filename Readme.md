@@ -79,8 +79,8 @@ Modificar mi nombre y teléfono en caso de así quererlo
 
 ## 4. Prototipo de alta fidelidad.
 
-![](src/imgs/prototipoAF4.png)
-![](src/imgs/prototipoAF3.png)
-![](src/imgs/prototipoAF2.png)
-![](src/imgs/prototipoAF1.png)
+![](src/images/prototipoAF4.png)
+![](src/images/prototipoAF3.png)
+![](src/images/prototipoAF2.png)
+![](src/images/prototipoAF1.png)
 
