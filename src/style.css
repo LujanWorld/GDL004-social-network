@@ -66,14 +66,14 @@ h2 {
       margin-top: 4%;
       margin-left: 0%;
       cursor: pointer;
-      background-color: transparent
+      background-color: transparent;
   }
 
   .button-github {
       margin-top: 4%;
       margin-left: 7%;
       cursor: pointer;
-      background-color: transparent
+      background-color: transparent;
   }
   .container-white {
     text-align: center;  
@@ -96,7 +96,10 @@ h2 {
     padding-top: 20px;
    
   }
+  .window {
 
+  }
+  
   .register {
       margin-top: 10px;
    
@@ -140,7 +143,7 @@ h2 {
     /* //styles blog */
 
   .general-blog {
-   display: flex;
+   background-image: url(images/fondoblog.jpeg);
   }
   .info-blog {
     width: 10%;
@@ -231,28 +234,25 @@ h2 {
     text-align: center;
   }
 
+
+  /* //Design for Profile// */
+
   .container-profile {
+    margin-top: 3%;
     width: 600px;
     height: auto;
-    margin-left: 25%;
-    margin-top: 5%;
+    margin-left: 30%;
     text-align: center;
     background-color: #A3E3E6;
     border-radius: 12px;
-
-  }
-
-
-  /* //Design for Profile// */
-  .container-profile {
-    margin-top: 10%;
   }
 
   .img {
-    border-radius: 50%;
+    margin-top: 5%;
+    border-radius: 30%;
     margin-left: 10px;
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 120px;
    }  
 
   .header-avatar img {
@@ -277,10 +277,42 @@ h2 {
     }
     .container {
       align-items: center;
-      margin-left: 120%;
+      margin-left: 200%;
       margin-top: 390%;
       cursor: pointer;
        }
+    .general-blog {
+     display: flexbox;
+    }
+    
+    .info-blog {
+        width: 10%;
+        text-align: center;
+        padding-top: 2%;
+        margin-left: 1%;
+      }
+
+      .logo-blog {
+        margin-top: 0%;
+        margin-left: 3%;
+      }
+    
+      .writing-box {
+        width: 600px;
+        height: 135px;
+        margin-left: 30%;
+        margin-top: 5%;
+        text-align: center;
+        background-color: #A3E3E6;
+        border-radius: 12px;
+      }
+    
+      .display-box {
+        width: 600px;
+        height: auto;
+        margin-left: 30%;
+        margin-top: 3%;
+        text-align: center;
 
   }
 
@@ -313,7 +345,7 @@ h2 {
     .container-white {
         margin-top: 3%;
         margin-left: 12%;     
-        height: 65%;
+        height: 50%;
         width: 75%;
         background-color: white;
       }
@@ -342,7 +374,8 @@ h2 {
       padding-top: 2%;
       background-image: url(images/imagen.jpg); 
       background-repeat: no-repeat;
-      background-size: cover; 
+      background-size: cover;
+      
       width: 100%;
       height: 1024px;
     }
@@ -357,9 +390,11 @@ h2 {
       margin-left: 16%;
       margin-top: 15%;
     }
+    
     .logo-blog {
       margin-top: 7%;
       margin-left: 53%;
+      background: transparent;
     }
     .writing-box {
       width: 400px;
@@ -377,7 +412,26 @@ h2 {
       margin-top: 3%;
       text-align: center;
     }
-    
+    .white-profile {
+      text-align: center;  
+      height: 55%;
+      width: 60%;
+      background-color: white;
+      border-radius: 12px;
+      margin-top: 10%;
+      margin-left: 20%;
+      padding-top: 20px;
+    }
+
+    .container-profile {
+      margin-top: 4%;
+      width: 90%;
+      height: 90%;
+      margin-left: 5%;
+      text-align: center;
+      background-color: #A3E3E6;
+      border-radius: 12px;
+    }
 
   }
   /* //Design for mobil// */
@@ -407,13 +461,13 @@ h2 {
     .container-white {
         margin-top: 3%;
         margin-left: 9%;     
-        height: 78%;
+        height: 53%;
         width: 82%;
         background-color: white;
       }
     
       .container-blue {
-        height: 75%;
+        height: 55%;
         width: 90%;
         background-color: #A3E3E6;
         margin: auto;

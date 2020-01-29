@@ -29,7 +29,7 @@ export default (container, state) => {
             </div>
         <div class="logo-container">
             <div class="container">
-                <img src="images/LogoAzul.png" width="270px" height="" alt="logo" id="imagen"/>
+                <a href="https://www.greenpeace.org/mexico/blog/1405/40-tips-para-cuidar-el-planeta/"><img src="images/LogoAzul.png" width="270px" height="" alt="logo" id="imagen"/></a>
                 </div>
             </div>   
         </div>  

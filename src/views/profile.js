@@ -5,21 +5,32 @@ export default (container, state) => {
       }
     let db = firebase.firestore();
       const viewWelcome = `
-      <div class="container-profile">
-      <img id="avatar" class="img" src="images/usuario.png" alt="Avatar">
-      <br>
-      <input type="text" id="name-input" class="login-input" placeholder="Nombre"/>
-      <br>
-      <input type="text" id="number-input" class="login-input" placeholder="Número telefonico"/>
-      <br>
-      <br>
-      <button id="change-data" class="button-login">Editar</button>
-      <br>
+      <div class="container-image">
+        <div class="white-profile">
+          <div class="container-profile">
+          <img id="avatar" class="img" src="images/usuario.png" alt="Avatar">
+          <br>
+          <input type="text" id="name-input" class="login-input" placeholder="Nombre"/>
+          <br>
+          <input type="text" id="number-input" class="login-input" placeholder="Número telefonico"/>
+          <br>
+          <br>
+          <button id="change-data" class="button-login">Editar</button>
+          <br>
+          <br>
+          <br>
+          <a href="#/welcome"><button class="button-login">Volver</button></a>
+          <br>
+          <br>
+          </div>
+        </div>
+      </div>
       `
       const sectionElem = document.createElement('section');
       sectionElem.innerHTML += viewWelcome 
       container.appendChild(sectionElem) 
       const changeButton = document.getElementById("change-data")
+
       const nameInput = document.getElementById("name-input")
       nameInput.value = state.user.displayName
       const numberInput = document.getElementById("number-input")

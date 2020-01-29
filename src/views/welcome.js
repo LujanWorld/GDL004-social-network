@@ -9,11 +9,17 @@ export default (container, state) => {
         <div class="info-blog">
           <nav id="menu">
           <ul>
-          <li><a href="#"><button class="dropbtn"><img src="images/logo.png" width="100px"></button></a></li>
+          <li><a href="#"><button class="button-google" ><img src="images/logo.png" width="100px"></button></a></li>
+          <br>
           <li><a href="#/profile"><button class="button-google" id="profile"></a><img src="images/profile.png" width="50px"></li>
+          <br>
           <li><a href="#"><button class="button-google"><img src="images/galery.png" width="50px"></button></a></li>
+          <br>
           <li><a href="#"><button class="button-google"><img src="images/loupe.png" width="50px"></button></a></li>
-          <li><a href="#"><button class="button-google"><img src="images/eco.png" width="50px"></button></a></li>
+          <br>
+          <li><a href="https://www.greenpeace.org/mexico/blog/1405/40-tips-para-cuidar-el-planeta/"><button class="button-google"><img src="images/eco.png" width="50px"></button></a></li>
+          <br>
+          <br>
           <li><a href="#"><button id="btnLogout" class="button-login">Cerrar Sesión</button></a></li>
           </ul>
           </nav>
