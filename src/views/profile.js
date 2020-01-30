@@ -12,7 +12,7 @@ export default (container, state) => {
           <br>
           <input type="text" id="name-input" class="login-input" placeholder="Nombre"/>
           <br>
-          <input type="text" id="number-input" class="login-input" placeholder="Número telefonico"/>
+          
           <br>
           <br>
           <button id="change-data" class="button-login">Editar</button>
@@ -33,8 +33,7 @@ export default (container, state) => {
 
       const nameInput = document.getElementById("name-input")
       nameInput.value = state.user.displayName
-      const numberInput = document.getElementById("number-input")
-      numberInput.value = state.user.phoneNumber
+      
       const avatar = document.getElementById("avatar")
       avatar.src = state.user.providerData[0].photoURL
       changeButton.addEventListener("click", e => {
@@ -45,7 +44,7 @@ export default (container, state) => {
               console.log("si hay usuario", user)
               user.updateProfile({
                 displayName: nameInput.value
-                //phoneNumber: numberInput.value
+                
               }).then(function() {
                 console.log("cambiado")
               }, function(error) {

@@ -73,14 +73,14 @@ Modificar mi nombre y teléfono en caso de así quererlo
 
 ## 3. Prototipo de baja fidelidad.
 
-![](src/images/prototipoBF1.jpg)
 ![](src/images/prototipoBF2.jpg)
+![](src/images/prototipoBF1.jpg)
 
 
 ## 4. Prototipo de alta fidelidad.
 
-![](src/images/prototipoAF4.png)
-![](src/images/prototipoAF3.png)
-![](src/images/prototipoAF2.png)
 ![](src/images/prototipoAF1.png)
+![](src/images/prototipoAF2.png)
+![](src/images/prototipoAF3.png)
+![](src/images/prototipoAF4.png)
 

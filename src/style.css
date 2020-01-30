@@ -96,10 +96,7 @@ h2 {
     padding-top: 20px;
    
   }
-  .window {
 
-  }
-  
   .register {
       margin-top: 10px;
    
@@ -143,7 +140,25 @@ h2 {
     /* //styles blog */
 
   .general-blog {
-   background-image: url(images/fondoblog.jpeg);
+   display: flex;
+   background-image: url(images/imagen.jpg);
+   background-position: center;
+   background-size: auto;
+   height: 1000px;
+  }
+
+  .container-post {
+    margin-top: 5%;
+  }
+
+  .white-white {
+    display: flex;
+    background-color: rgb(255,255,255,0.7);
+    width: 90%;
+    height: 70%;
+    margin-left: 5%;
+    margin-top: 3%;
+    border-radius: 12px;
   }
   .info-blog {
     width: 10%;
@@ -162,15 +177,14 @@ h2 {
   }
 
   .logo-blog {
-    margin-top: 7%;
-    margin-left: 63%;
+    margin-left: 60%;
   }
 
   .writing-box {
     width: 600px;
     height: 135px;
-    margin-left: 30%;
-    margin-top: 5%;
+    margin-left: 33%;
+    margin-top: 2%;
     text-align: center;
     background-color: #A3E3E6;
     border-radius: 12px;
@@ -179,7 +193,7 @@ h2 {
   .display-box {
     width: 600px;
     height: auto;
-    margin-left: 30%;
+    margin-left: 33%;
     margin-top: 3%;
     text-align: center;
   }
@@ -277,42 +291,10 @@ h2 {
     }
     .container {
       align-items: center;
-      margin-left: 200%;
+      margin-left: 170%;
       margin-top: 390%;
       cursor: pointer;
        }
-    .general-blog {
-     display: flexbox;
-    }
-    
-    .info-blog {
-        width: 10%;
-        text-align: center;
-        padding-top: 2%;
-        margin-left: 1%;
-      }
-
-      .logo-blog {
-        margin-top: 0%;
-        margin-left: 3%;
-      }
-    
-      .writing-box {
-        width: 600px;
-        height: 135px;
-        margin-left: 30%;
-        margin-top: 5%;
-        text-align: center;
-        background-color: #A3E3E6;
-        border-radius: 12px;
-      }
-    
-      .display-box {
-        width: 600px;
-        height: auto;
-        margin-left: 30%;
-        margin-top: 3%;
-        text-align: center;
 
   }
 
@@ -390,17 +372,20 @@ h2 {
       margin-left: 16%;
       margin-top: 15%;
     }
-    
+    .general-blog {
+      display: flex;
+      height: 1200px;
+     }
+
     .logo-blog {
-      margin-top: 7%;
-      margin-left: 53%;
-      background: transparent;
+      margin-top: 1%;
+      margin-left: 43%;
     }
     .writing-box {
       width: 400px;
       height: 120px;
-      margin-left: 33%;
-      margin-top: 10%;
+      margin-left: 28%;
+      margin-top: 3%;
       text-align: center;
       background-color: #A3E3E6;
       border-radius: 12px;
@@ -408,7 +393,7 @@ h2 {
     .display-box {
       width: 400px;
       height: auto;
-      margin-left: 33%;
+      margin-left: 28%;
       margin-top: 3%;
       text-align: center;
     }
@@ -432,6 +417,9 @@ h2 {
       background-color: #A3E3E6;
       border-radius: 12px;
     }
+
+  
+
 
   }
   /* //Design for mobil// */
@@ -515,7 +503,28 @@ h2 {
       margin-left: 2.5%;
       padding-top: 2px;
     }
-
+    .logo-blog {
+      margin-top: 7%;
+      margin-left: 63%;
+    }
+  
+    .writing-box {
+      width: 600px;
+      height: 135px;
+      margin-left: 30%;
+      margin-top: 5%;
+      text-align: center;
+      background-color: #A3E3E6;
+      border-radius: 12px;
+    }
+  
+    .display-box {
+      width: 600px;
+      height: auto;
+      margin-left: 30%;
+      margin-top: 3%;
+      text-align: center;
+    }
   }
 
 

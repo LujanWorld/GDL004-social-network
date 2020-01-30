@@ -60,6 +60,7 @@ btnLogin.addEventListener("click", e => {
   const promise = auth.signInWithEmailAndPassword(email, pass);
   promise.then((data) => {
     console.log(data)
+    state.user = data.user
     window.location.hash = '#/welcome'
   }).catch(e => console.log(e.message));
 });

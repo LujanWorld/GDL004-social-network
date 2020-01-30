@@ -39,6 +39,7 @@ export default (container, state) => {
     regirsterBtn.addEventListener("click", (e) => {
       e.preventDefault()
       firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then((data) => {
+         state.user = data.user
          window.location.hash = '#/welcome'
       }).catch(function(error) {
          console.log(error)
