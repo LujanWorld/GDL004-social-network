@@ -1,52 +1,49 @@
-export default (container) => {
-  var db = firebase.firestore();
+export default (container, state) => {
+  if (Object.keys(state).length === 0) {
+    console.log("estoy vacio")
+    return window.location.hash = '#/'
+  }
+  let db = firebase.firestore();
     const viewWelcome = `
     <div class="general-blog">
-        <div class="info-blog">
-            <button class="icon-logo"><img src="images/logo.png" width="100px"></button>
+      <div class="white-white">
+          <div class="info-blog">
+            <li><a href="#"><button class="button-google" ><img src="images/logo.png" width="100px"></button></a></li>
+            <br>
+            <li><a href="#/profile"><button class="button-google" id="profile"></a><img src="images/profile.png" width="50px"></li>
             <br>
             <br>
-            <button class="button-google"><img src="images/profile.png" width="50px"></button>
+            <li><a href="https://www.greenpeace.org/mexico/blog/1405/40-tips-para-cuidar-el-planeta/"><button class="button-google"><img src="images/eco.png" width="50px"></button></a></li>
             <br>
             <br>
-            <br>
-            <button class="button-google"><img src="images/galery.png" width="50px"></button>
-            <br>
-            <br>
-            <button class="button-google"><img src="images/loupe.png" width="50px"></button>
-            <br>
-            <br>
-            <br>
-            <button class="button-google"><img src="images/eco.png" width="50px"></button>
-            <br>
-            <br>
-            <br>
-            <button id="btnLogout" class="button-login">Salir</button>
-        </div>
-        <div class="container-post">
-            <div class="logo-blog">
-                <img src="images/name.png" width="250px" alt="">
+            <li><a href="#"><button id="btnLogout" class="button-login">Cerrar Sesión</button></a></li>
+          </div>
+          <div class="container-post">
+              <div class="logo-blog">
+                  <img src="images/name.png" width="250px" alt="">
+                  <br>
+              </div>
+              <div class="writing-box">
                 <br>
-            </div>
-            <div class="writing-box">
-             <br>
-             <h2 id="createPost">¿Qué haces para cuidar a tu planeta?</h2>
-             <br>
-             <input type="text" id="makePost" class="login-input" placeholder="Cuéntanos"/>
-             <button id="savePost" class="btnCancel" >Guardar</button>
-            </div>
-             <div id="posts" class="display-box">
-               <div class="post">
-               <div class="name">Nombre del que escribe el post</div>
-               <div class="date">fecha del post</div>
-               <p class="text">Esta red social esta super</p>
-             </div>
+                <h2 id="createPost">¿Qué haces para cuidar a tu planeta?</h2>
+                <br>
+                <input type="text" id="makePost" class="login-input" placeholder="Cuéntanos"/>
+                <button id="savePost" class="btnCancel" >Guardar</button>
+              </div>
+              <div id="posts" class="display-box">
+                <div class="post">
+                <p class="name">Nombre del que escribe el post</p>
+                <div class="date">fecha del post</div>
+                <p class="text">Esta red social esta super</p>
+              </div>
 
-            </div>
-
-        </div>   
+          </div>
+  
+      </div>
     </div>
       `
+
+      console.log("el  estado:", state)
 
       const sectionElem = document.createElement('section');
       sectionElem.innerHTML += viewWelcome 
@@ -63,9 +60,14 @@ export default (container) => {
       btnLogout.addEventListener("click", e => {
           e.preventDefault()
         firebase.auth().signOut().then(() => {
+          state = {}
           window.location.hash = '#/'
         }).catch()
       });
+      profile.addEventListener("click", e => {
+        e.preventDefault()
+        window.location.hash = '#/profile'
+      })
 
       posts.addEventListener("click", e => {
         if (e.target.classList.contains("btnDelete")) {
@@ -74,13 +76,14 @@ export default (container) => {
           db.collection("posts").doc(postId).delete()
             .then(() => {
               console.log(`Deleted post with id ${postId}`);
+              showPostsFromDB()
             })
             .catch(err => console.log(`Error while deleting post with id ${postId}`, err));
         }
       
         if (e.target.classList.contains("btnEdit")) {
           let doc = document.getElementsByClassName(e.target.id)[0]
-          doc.classList.remove("escondido");
+          doc.classList.remove("occult");
           let textEl = e.target.parentElement.getElementsByClassName("text")[0];
           let inputEl = e.target.parentElement.getElementsByClassName("editInput")[0];
           inputEl.value = textEl.innerHTML;
@@ -103,6 +106,8 @@ export default (container) => {
           })
             .then(function () {
               console.log("Document successfully updated!");
+              showPostsFromDB()
+
             })
             .catch(function (error) {
               console.error("Error updating document: ", error);
@@ -111,7 +116,7 @@ export default (container) => {
         if (e.target.classList.contains("btnCancel")) {
           ["editInput", "btnSave", "btnCancel", "btnEdit", "btnDelete"].forEach(className => {
             let el = e.target.parentElement.getElementsByClassName(className)[0];
-            el.classList.toggle("hide");
+            el.classList.toggle("occult");
           });
         }
       
@@ -121,7 +126,7 @@ export default (container) => {
       savePost.addEventListener("click", function () {
         const textToSave = makePost.value;
         let data = {
-          email: "",
+          email: state.user.email,
           date: new Date(),
           text: textToSave,
         };
@@ -153,7 +158,7 @@ export default (container) => {
         <button class="button-google"><img src="images/like.png" width="20px"></button>
         <br>
         <br>
-        <div class="escondido ${botonEdit}" post-id="${p.id}" >
+        <div class="occult ${botonEdit}" post-id="${p.id}" >
           <input type="text"  class="editInput hide">
           <button class="btnSave hide">Guardar</button>
           <button class="btnCancel hide">Cancelar</button>

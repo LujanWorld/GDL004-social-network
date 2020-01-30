@@ -1,20 +1,22 @@
   
 import { components } from '../views/components.js';
 
-const router = (router) => {
+const router = (router, state) => {
   const container = document.getElementById('main-conteiner');
   container.innerHTML = '';
   switch (router) {
     case '': {
-        return components.login(container) }
+        return components.login(container, state) }
     case '#/': {
-        return components.login(container); }
+        return components.login(container, state); }
     case '#/blog': {
-      return components.blog(container); }
+      return components.blog(container, state); }
     case '#/welcome': {
-        return components.welcome(container); }
+        return components.welcome(container, state); }
     case '#/signup': {
-        return components.signup(container); }
+        return components.signup(container, state); }
+    case '#/profile': {
+          return components.profile(container, state); }
     default:
       break;
   }

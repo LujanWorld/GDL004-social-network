@@ -1,5 +1,5 @@
 
-export default (container) => {
+export default (container, state) => {
     const viewLogin = `
     <div id="login">
         <div class="general-container">
@@ -8,10 +8,10 @@ export default (container) => {
                 <div class="container-white">
 
                     <div class="container-blue">
-                        <input id="txtEmail" type="email" class="login-input" placeholder="Email"/> 
+                        <input id="txtEmail" type="email" class="login-input" placeholder="ejemplo@ejemplo.com"/> 
                         <br>
                         <br>
-                        <input id="txtPassword" type="password" class="login-input"  placeholder="Password"/> 
+                        <input id="txtPassword" type="password" class="login-input"  placeholder="Escribe tu contraseña"/> 
                         <br>
                         <br>
                         <button id="btnLogin" class="button-login">Iniciar sesión</button>
@@ -29,7 +29,7 @@ export default (container) => {
             </div>
         <div class="logo-container">
             <div class="container">
-                <img src="images/LogoAzul.png" width="270px" height="" alt="logo" id="imagen"/>
+                <a href="https://www.greenpeace.org/mexico/blog/1405/40-tips-para-cuidar-el-planeta/"><img src="images/LogoAzul.png" width="270px" height="" alt="logo" id="imagen"/></a>
                 </div>
             </div>   
         </div>  
@@ -60,6 +60,7 @@ btnLogin.addEventListener("click", e => {
   const promise = auth.signInWithEmailAndPassword(email, pass);
   promise.then((data) => {
     console.log(data)
+    state.user = data.user
     window.location.hash = '#/welcome'
   }).catch(e => console.log(e.message));
 });
@@ -68,7 +69,17 @@ btnLogin.addEventListener("click", e => {
 googleSignIn.addEventListener("click", (e) => {
   e.preventDefault()
   const baseProvider = new firebase.auth.GoogleAuthProvider();
-  logOAuth(baseProvider)
+  logOAuth(baseProvider, state)
+//   logOAuth(baseProvider).then(result => {
+//         state.user = result.user
+//       $("#avatar").attr("src", result.user.photoURL)
+//       $(".modal").modal("close")
+//       Materialize.toast(`Bienvenido ${result.user.displayNAme} !! `, 4000)
+//   })
+//   .catch(error =>{
+//       console.error(error)
+//       Materialize.toast(`Error al autenticarse con google: ${error} `, 4000)
+//   })
 });
 
 // login with GitHub
@@ -76,7 +87,7 @@ githubSignIn.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("clickeado")
   const providerGit = new firebase.auth.GithubAuthProvider();
-  logOAuth(providerGit)
+  logOAuth(providerGit, state)
 });
 
 // // add register event
@@ -87,13 +98,14 @@ btnSignUp.addEventListener("click", e => {
 
 }
 
-const logOAuth = (provider) => {
+const logOAuth = (provider, state) => {
     firebase
         .auth()
         .signInWithPopup(provider)
         .then((result) => {
         console.log(result);
         console.log("Success Google linked");
+        state.user = result.user
         window.location.hash = '#/welcome'
         })
         .catch((err) => console.log(err));

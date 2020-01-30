@@ -1,5 +1,7 @@
 import { router } from './utils/router.js'
 
+let state = {}
+
 const init = () => {
 
 const firebaseConfig = {
@@ -13,11 +15,11 @@ const firebaseConfig = {
   measurementId: "G-CJK45C4SQ1"
 };
 firebase.initializeApp(firebaseConfig);
-router(window.location.hash)
+router(window.location.hash, state)
 };
 
 window.addEventListener('hashchange', () => {
-  router(window.location.hash);
+  router(window.location.hash, state);
 });
   
 window.addEventListener('load', init);

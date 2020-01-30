@@ -1,4 +1,4 @@
-export default (container) => {
+export default (container, state) => {
     const viewSignup = `
     <div class="container-image">
       <div class="container-register-white">
@@ -39,6 +39,7 @@ export default (container) => {
     regirsterBtn.addEventListener("click", (e) => {
       e.preventDefault()
       firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then((data) => {
+         state.user = data.user
          window.location.hash = '#/welcome'
       }).catch(function(error) {
          console.log(error)
