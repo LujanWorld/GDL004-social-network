@@ -6,11 +6,11 @@ import Signup from './signup.js';
 import Profile from './profile.js';
 
 const components = {
-    login: Login,
-    blog: Blog,
-    welcome: Welcome,
-    signup: Signup,
-    profile: Profile
-}
+  login: Login,
+  blog: Blog,
+  welcome: Welcome,
+  signup: Signup,
+  profile: Profile,
+};
 
 export { components };

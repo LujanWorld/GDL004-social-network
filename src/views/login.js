@@ -1,6 +1,5 @@
-
 export default (container, state) => {
-    const viewLogin = `
+  const viewLogin = `
     <div id="login">
         <div class="general-container">
             <div class="info-container">
@@ -34,82 +33,70 @@ export default (container, state) => {
             </div>   
         </div>  
     </div>
-</div>`
-    
-    const sectionElem = document.createElement('section');
-    sectionElem.innerHTML += viewLogin 
-    container.appendChild(sectionElem) 
+</div>`;
 
-    const txtEmail = document.getElementById("txtEmail");
-    const txtPassword = document.getElementById("txtPassword");
-    const btnLogin = document.getElementById("btnLogin");
-    const btnSignUp = document.getElementById("btnSignUp");
-    const googleSignIn = document.getElementById("googleSignIn");
-    const githubSignIn = document.getElementById("githubSignIn");
+  const sectionElem = document.createElement('section');
+  sectionElem.innerHTML += viewLogin;
+  container.appendChild(sectionElem);
 
-// add login event
-btnLogin.addEventListener("click", e => {
-  e.preventDefault()
-  console.log("acá")
-  // get email and pass
-  const email = txtEmail.value;
-  const pass = txtPassword.value;
-  const auth = firebase.auth();
+  const txtEmail = document.getElementById('txtEmail');
+  const txtPassword = document.getElementById('txtPassword');
+  const btnLogin = document.getElementById('btnLogin');
+  const btnSignUp = document.getElementById('btnSignUp');
+  const googleSignIn = document.getElementById('googleSignIn');
+  const githubSignIn = document.getElementById('githubSignIn');
 
-  // sing in
-  const promise = auth.signInWithEmailAndPassword(email, pass);
-  promise.then((data) => {
-    console.log(data)
-    state.user = data.user
-    window.location.hash = '#/welcome'
-  }).catch(e => console.log(e.message));
-});
+  // add login event
+  btnLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('acá');
+    // get email and pass
+    const email = txtEmail.value;
+    const pass = txtPassword.value;
+    const auth = firebase.auth();
 
-// login with Google
-googleSignIn.addEventListener("click", (e) => {
-  e.preventDefault()
-  const baseProvider = new firebase.auth.GoogleAuthProvider();
-  logOAuth(baseProvider, state)
-//   logOAuth(baseProvider).then(result => {
-//         state.user = result.user
-//       $("#avatar").attr("src", result.user.photoURL)
-//       $(".modal").modal("close")
-//       Materialize.toast(`Bienvenido ${result.user.displayNAme} !! `, 4000)
-//   })
-//   .catch(error =>{
-//       console.error(error)
-//       Materialize.toast(`Error al autenticarse con google: ${error} `, 4000)
-//   })
-});
+    // sing in
+    const promise = auth.signInWithEmailAndPassword(email, pass);
+    promise
+      .then((data) => {
+        console.log(data);
+        state.user = data.user;
+        window.location.hash = '#/welcome';
+      })
+      .catch(e => console.log(e.message));
+  });
 
-// login with GitHub
-githubSignIn.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log("clickeado")
-  const providerGit = new firebase.auth.GithubAuthProvider();
-  logOAuth(providerGit, state)
-});
+  // login with Google
+  googleSignIn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const baseProvider = new firebase.auth.GoogleAuthProvider();
+    logOAuth(baseProvider, state);
+  });
 
-// // add register event
-btnSignUp.addEventListener("click", e => {
-  e.preventDefault()
-  window.location.hash = '#/signup'
-});
+  // login with GitHub
+  githubSignIn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('clickeado');
+    const providerGit = new firebase.auth.GithubAuthProvider();
+    logOAuth(providerGit, state);
+  });
 
-}
+  // // add register event
+  btnSignUp.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.hash = '#/signup';
+  });
+};
 
 const logOAuth = (provider, state) => {
-    firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then((result) => {
-        console.log(result);
-        console.log("Success Google linked");
-        state.user = result.user
-        window.location.hash = '#/welcome'
-        })
-        .catch((err) => console.log(err));
-}
-
-
-
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      console.log(result);
+      console.log('Success Google linked');
+      state.user = result.user;
+      window.location.hash = '#/welcome';
+    })
+    .catch(err => console.log(err));
+};

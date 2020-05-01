@@ -1,5 +1,5 @@
 export default (container, state) => {
-    const viewSignup = `
+  const viewSignup = `
     <div class="container-image">
       <div class="container-register-white">
          <div class="container-register">
@@ -28,23 +28,22 @@ export default (container, state) => {
       </div> 
     </div>
           </fomr>
-          `
-    
-    const sectionElem = document.createElement('section');
-    sectionElem.innerHTML += viewSignup 
-    container.appendChild(sectionElem)    
-    const regirsterBtn = document.getElementById("btn-iniciar-registrar")
-    const email = document.getElementById("input-mail");
-    const password = document.getElementById("input-password");
-    regirsterBtn.addEventListener("click", (e) => {
-      e.preventDefault()
-      firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then((data) => {
-         state.user = data.user
-         window.location.hash = '#/welcome'
-      }).catch(function(error) {
-         console.log(error)
-         alert("Hubo un error")
-       });
-    })
+          `;
 
-}
+  const sectionElem = document.createElement('section');
+  sectionElem.innerHTML += viewSignup;
+  container.appendChild(sectionElem);
+  const regirsterBtn = document.getElementById('btn-iniciar-registrar');
+  const email = document.getElementById('input-mail');
+  const password = document.getElementById('input-password');
+  regirsterBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then((data) => {
+      state.user = data.user;
+      window.location.hash = '#/welcome';
+    }).catch((error) => {
+      console.log(error);
+      alert('Hubo un error');
+    });
+  });
+};

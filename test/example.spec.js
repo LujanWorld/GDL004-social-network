@@ -1,7 +1,7 @@
-import { example } from '../src/example.js';
+import { login } from "../src/login.js";
 
-describe('example', () => {
-  it('debería ser una función', () => {
-    expect(typeof example).toBe('function');
+describe("promise", () => {
+  it("debería ser una función", () => {
+    expect(typeof example).toBe("function");
   });
 });
